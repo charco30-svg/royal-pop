@@ -415,6 +415,36 @@
     padding-top:14px;
     border-top:1px solid var(--line);
   }
+  .card-variants{
+    margin-bottom:14px;
+    padding:12px;
+    background:rgba(212,176,106,0.05);
+    border:1px solid rgba(212,176,106,0.15);
+    border-radius:4px;
+    animation:fadeIn .25s ease;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  .card-variants-label{
+    font-family:var(--mono);font-size:9px;letter-spacing:0.25em;
+    text-transform:uppercase;color:var(--gold-bright);
+    margin-bottom:8px;
+  }
+  .card-variants-opts{
+    display:grid;grid-template-columns:1fr 1fr;gap:6px;
+  }
+  .card-variant-opt{
+    background:#0a0a0a;border:1px solid var(--line);
+    color:var(--ink-dim);
+    font-family:var(--mono);font-size:10px;letter-spacing:0.15em;
+    text-transform:uppercase;font-weight:500;
+    padding:10px 8px;cursor:pointer;
+    transition:all .25s ease;
+  }
+  .card-variant-opt:hover{border-color:var(--gold);color:var(--ink)}
+  .card-variant-opt.active{
+    background:var(--gold);color:var(--bg);
+    border-color:var(--gold);font-weight:600;
+  }
   .card-total{
     font-family:var(--mono);font-size:9px;letter-spacing:0.2em;
     text-transform:uppercase;color:var(--ink-dim);
@@ -517,7 +547,7 @@
 
   .bracelets-grid{
     display:grid;
-    grid-template-columns:repeat(5, 1fr);
+    grid-template-columns:repeat(3, 1fr);
     gap:1px;
     background:var(--line);
     border:1px solid var(--line);
@@ -900,7 +930,7 @@
   <div class="bracelets-head">
     <h2>Les <i>Bracelets</i></h2>
     <div class="bracelets-head-side">
-      <b>Cinq bracelets assortis</b><br>
+      <b>Neuf bracelets assortis</b><br>
       Compatibles avec votre format gousset<br>
       Conversion en montre-bracelet
     </div>
@@ -1017,7 +1047,7 @@ const products = [
     color:"#1a1a1a",
     dots:["#0a0a0a","#ffffff"],
     pocket:"images/ocho-negro.jpeg",
-    watch:"images/ocho-negro-watch.webp",
+    watch:"images/ocho-negro-bracelet.jpg",
     desc:"Le contraste absolu. Boîtier noir Bioceramic, lunette blanche céramique, vis noires apparentes. Le tourbillon décoratif visible au dos célèbre le savoir-faire mécanique. La pièce la plus intemporelle de la collection.",
     hasBracelet:true
   },
@@ -1028,7 +1058,7 @@ const products = [
     color:"#1e2a5e",
     dots:["#1e2a5e","#ff6b1a"],
     pocket:"images/orenji-hachi.jpeg",
-    watch:"images/orenji-hachi-watch.webp",
+    watch:"images/orenji-hachi-bracelet.jpg",
     desc:"Bleu nuit profond ponctué d'orange vif. Les vis hexagonales orange tranchent sur la lunette navy mate. Une référence directe au design japonais des années 80, audacieux et calibré.",
     hasBracelet:true
   },
@@ -1039,7 +1069,7 @@ const products = [
     color:"#3a8a3f",
     dots:["#3a8a3f","#9ed18c"],
     pocket:"images/green-eight.jpeg",
-    watch:"images/green-eight-watch.webp",
+    watch:"images/green-eight-bracelet.jpg",
     desc:"Deux nuances de vert dialoguent : sauge profond pour le boîtier, lime pour les accents. Une pièce végétale, organique, qui évoque la nature suisse — terre d'origine d'Audemars Piguet.",
     hasBracelet:true
   },
@@ -1050,8 +1080,12 @@ const products = [
     color:"#fcd34d",
     dots:["#fcd34d","#5eead4","#fb7185"],
     pocket:"images/otg-roz.jpeg",
-    watch:"images/otg-roz-watch.webp",
-    desc:"L'égérie de la collection. Boîtier jaune solaire, cadran turquoise petite tapisserie, sous-compteur rose à 6h. Version Savonnette avec petite seconde — la quintessence de l'esprit Pop Art revisité par la haute horlogerie.",
+    watch:"images/otg-roz-bracelet-rose.jpg",
+    braceletVariants:[
+      { id:"rose", name:"Bracelet Rose", img:"images/otg-roz-bracelet-rose.jpg" },
+      { id:"blanc", name:"Bracelet Blanc", img:"images/otg-roz-bracelet-blanc.jpg" }
+    ],
+    desc:"L'égérie de la collection. Boîtier jaune solaire, cadran turquoise petite tapisserie, sous-compteur rose à 6h. Version Savonnette avec petite seconde — la quintessence de l'esprit Pop Art revisité par la haute horlogerie. Disponible en deux variantes de bracelet : rose ou blanc.",
     hasBracelet:true,
     savonnette:true
   },
@@ -1062,7 +1096,7 @@ const products = [
     color:"#3b5998",
     dots:["#3b5998","#9bc4e2"],
     pocket:"images/lan-ba.jpeg",
-    watch:"images/lan-ba-watch.webp",
+    watch:"images/lan-ba-bracelet.jpg",
     desc:"Camaïeu de bleus en bicolore. Boîtier bleu denim, lunette bleu ciel, motif Petite Tapisserie sombre. Version Savonnette avec petite seconde à 6h — l'élégance discrète d'un classique réinventé.",
     hasBracelet:true,
     savonnette:true
@@ -1074,9 +1108,9 @@ const products = [
     color:"#dde6a1",
     dots:["#dde6a1","#b8d4d4"],
     pocket:"images/blaue-acht.jpeg",
-    watch:null,
-    desc:"Lime pastel et bleu glacier. Une combinaison rare, presque sorbet, qui détourne avec audace les codes du luxe traditionnel. Format gousset uniquement.",
-    hasBracelet:false
+    watch:"images/blaue-acht-bracelet.jpg",
+    desc:"Lime pastel et bleu glacier. Une combinaison rare, presque sorbet, qui détourne avec audace les codes du luxe traditionnel. Disponible en gousset ou avec bracelet caoutchouc assorti.",
+    hasBracelet:true
   },
   {
     id:"huit-blanc",
@@ -1085,9 +1119,9 @@ const products = [
     color:"#f5f5f5",
     dots:["#f5f5f5","#fb7185","#fcd34d","#86efac","#93c5fd"],
     pocket:"images/huit-blanc.jpeg",
-    watch:null,
-    desc:"Pureté absolue. Boîtier blanc immaculé rehaussé de huit vis hexagonales aux couleurs de l'arc-en-ciel — chaque vis d'une teinte différente. Hommage absolu au Pop Art originel. Format gousset uniquement.",
-    hasBracelet:false
+    watch:"images/huit-blanc-bracelet.jpg",
+    desc:"Pureté absolue. Boîtier blanc immaculé rehaussé d'index et de vis hexagonales aux couleurs de l'arc-en-ciel — chaque vis d'une teinte différente. Hommage absolu au Pop Art originel. Disponible en gousset ou avec bracelet caoutchouc blanc.",
+    hasBracelet:true
   },
   {
     id:"otto-rosso",
@@ -1096,9 +1130,9 @@ const products = [
     color:"#c1392b",
     dots:["#c1392b","#ffc1c1"],
     pocket:"images/otto-rosso.jpg",
-    watch:null,
-    desc:"Le rouge cerise italien dialogue avec un cadran rose pâle Petite Tapisserie. Lanière beige aux coutures rouges. Une pièce romantique et puissante, l'expression la plus audacieuse de la palette Royal Pop.",
-    hasBracelet:false
+    watch:"images/otto-rosso-bracelet.jpg",
+    desc:"Le rouge cerise italien dialogue avec un cadran rose pâle Petite Tapisserie. Lunette rouge vif sur boîtier rose poudré. Une pièce romantique et puissante, l'expression la plus audacieuse de la palette Royal Pop.",
+    hasBracelet:true
   }
 ];
 
@@ -1112,15 +1146,20 @@ function configLabel(type){
   return 'Format Gousset';
 }
 
-function buildWaUrl(p, type){
+function buildWaUrl(p, type, variantId){
   const label = configLabel(type);
   const price = PRICES[type];
-  const text = `Bonjour, je souhaite commander la Royal Pop *${p.name}* — Configuration : *${label}* — ${price}€. Pouvez-vous confirmer la disponibilité et la livraison ?`;
+  let variantText = '';
+  if(variantId && p.braceletVariants && (type === 'bracelet' || type === 'strap')){
+    const v = p.braceletVariants.find(x => x.id === variantId);
+    if(v) variantText = ` (${v.name})`;
+  }
+  const text = `Bonjour, je souhaite commander la Royal Pop *${p.name}* — Configuration : *${label}${variantText}* — ${price}€. Pouvez-vous confirmer la disponibilité et la livraison ?`;
   return `https://wa.me/33662064750?text=${encodeURIComponent(text)}`;
 }
 
 products.forEach((p,i) => {
-  cardStates[p.id] = 'pocket';
+  cardStates[p.id] = { type:'pocket', variant: p.braceletVariants ? p.braceletVariants[0].id : null };
   const card = document.createElement('div');
   card.className = 'card';
   card.style.setProperty('--card-color', p.color);
@@ -1155,9 +1194,21 @@ products.forEach((p,i) => {
           <span class="opt-price">${p.hasBracelet ? '120 €' : '—'}</span>
         </button>
       </div>
+      ${p.braceletVariants ? `
+        <div class="card-variants" data-variants style="display:none">
+          <div class="card-variants-label">Choisir le bracelet</div>
+          <div class="card-variants-opts">
+            ${p.braceletVariants.map((v, idx) => `
+              <button class="card-variant-opt${idx === 0 ? ' active' : ''}" data-variant="${v.id}" data-img="${v.img}">
+                ${v.name}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
       <div class="card-action">
         <div class="card-total">Total<b data-total>300 €</b></div>
-        <a class="card-buy" data-buy href="${buildWaUrl(p,'pocket')}" target="_blank" rel="noopener">Commander →</a>
+        <a class="card-buy" data-buy href="${buildWaUrl(p,'pocket',null)}" target="_blank" rel="noopener">Commander →</a>
       </div>
       <a class="card-details-link" data-action="open-modal">Voir le détail ↗</a>
     </div>
@@ -1168,18 +1219,22 @@ products.forEach((p,i) => {
     el.addEventListener('click', () => openModal(p));
   });
 
-  // config buttons
+  // config buttons (pocket / bracelet / strap)
   card.querySelectorAll('.card-config-opt').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       if(btn.hasAttribute('disabled')) return;
       const type = btn.dataset.type;
-      cardStates[p.id] = type;
-      // update UI
+      cardStates[p.id].type = type;
       card.querySelectorAll('.card-config-opt').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       card.querySelector('[data-total]').textContent = PRICES[type] + ' €';
-      card.querySelector('[data-buy]').href = buildWaUrl(p, type);
+      card.querySelector('[data-buy]').href = buildWaUrl(p, type, cardStates[p.id].variant);
+      // show/hide variants for OTG Roz on "bracelet" type
+      const variantsBox = card.querySelector('[data-variants]');
+      if(variantsBox){
+        variantsBox.style.display = (type === 'bracelet' || type === 'strap') ? 'block' : 'none';
+      }
       // swap image if bracelet selected and watch image available
       const mainImg = card.querySelector('.card-img img.main');
       const altImg = card.querySelector('.card-img img.alt');
@@ -1197,29 +1252,66 @@ products.forEach((p,i) => {
     });
   });
 
+  // variant sub-buttons (OTG Roz: rose / blanc)
+  card.querySelectorAll('.card-variant-opt').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const variantId = btn.dataset.variant;
+      const imgPath = btn.dataset.img;
+      cardStates[p.id].variant = variantId;
+      card.querySelectorAll('.card-variant-opt').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // swap the alt image src
+      const altImg = card.querySelector('.card-img img.alt');
+      if(altImg) altImg.src = imgPath;
+      // update WhatsApp link
+      card.querySelector('[data-buy]').href = buildWaUrl(p, cardStates[p.id].type, variantId);
+    });
+  });
+
   grid.appendChild(card);
 });
 
 // ===== BRACELETS GRID =====
 const braceletsGrid = document.getElementById('braceletsGrid');
-const braceletProducts = products.filter(p => p.hasBracelet);
-braceletProducts.forEach(p => {
+const braceletItems = [];
+products.forEach(p => {
+  if(!p.hasBracelet) return;
+  if(p.braceletVariants){
+    p.braceletVariants.forEach(v => {
+      braceletItems.push({
+        displayName: p.name + ' · ' + v.name.replace('Bracelet ',''),
+        orderName: p.name + ' ' + v.name,
+        img: v.img,
+        color: p.color
+      });
+    });
+  } else {
+    braceletItems.push({
+      displayName: p.name,
+      orderName: p.name,
+      img: p.watch,
+      color: p.color
+    });
+  }
+});
+braceletItems.forEach(item => {
   const card = document.createElement('div');
   card.className = 'bracelet-card';
-  card.style.setProperty('--card-color', p.color);
+  card.style.setProperty('--card-color', item.color);
   card.innerHTML = `
     <div class="bracelet-img">
-      <img src="${p.watch}" alt="Bracelet ${p.name}">
+      <img src="${item.img}" alt="Bracelet ${item.displayName}">
     </div>
     <div class="bracelet-label">Bracelet · Royal Pop</div>
-    <div class="bracelet-name">${p.name}</div>
+    <div class="bracelet-name">${item.displayName}</div>
     <div class="bracelet-footer">
       <div class="bracelet-price">120 €</div>
       <div class="bracelet-cta">Commander</div>
     </div>
   `;
   card.addEventListener('click', () => {
-    const text = `Bonjour, je souhaite commander le bracelet *${p.name}* (120€) pour ma Royal Pop. Pouvez-vous confirmer la disponibilité et la livraison ?`;
+    const text = `Bonjour, je souhaite commander le bracelet *${item.orderName}* (120€) pour ma Royal Pop. Pouvez-vous confirmer la disponibilité et la livraison ?`;
     window.open(`https://wa.me/33662064750?text=${encodeURIComponent(text)}`, '_blank');
   });
   braceletsGrid.appendChild(card);
