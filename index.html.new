@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#0a0a0a" />
+<title>ROYAL POP — Swatch × Audemars Piguet</title>
+<meta name="description" content="La collection Royal Pop, fruit de la collaboration Swatch × Audemars Piguet. Montres de poche en Bioceramic, livraison 24/72h partout en France." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Geist+Mono:wght@300;400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-dark:#0a0a0a;
+    --bg-dark-2:#111111;
+    --bg-light:#f0e9da;
+    --bg-light-2:#e8e0cc;
+    --ink-on-dark:#f4f1ea;
+    --ink-dim-on-dark:#a8a397;
+    --ink-on-light:#0a0a0a;
+    --ink-dim-on-light:#5a5448;
+    --gold-on-dark:#e8c98a;
+    --gold-on-light:#a07d2c;
+    --line-dark:#1f1f1f;
+    --line-light:#d6cdb3;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter Tight','Helvetica Neue',sans-serif;
+    --mono:'Geist Mono','SF Mono',monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;background:#0a0a0a}
+  body{
+    background:#0a0a0a;
+    color:var(--ink-on-dark);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,video{max-width:100%;display:block}
+  button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit}
+
+  /* ============ THEME SECTIONS ============ */
+  .theme-dark{background:var(--bg-dark);color:var(--ink-on-dark)}
+  .theme-light{background:var(--bg-light);color:var(--ink-on-light)}
+  .theme-dark .accent{color:var(--gold-on-dark)}
+  .theme-light .accent{color:var(--gold-on-light)}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 40px;
+    background:rgba(10,10,10,0.85);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav-logo{
+    font-family:var(--mono);
+    font-size:11px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--ink-on-dark);
+  }
+  .nav-logo b{color:var(--gold-on-dark);font-weight:500}
+  .nav-links{display:flex;gap:32px}
+  .nav-links a{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--ink-dim-on-dark);
+    text-decoration:none;transition:color .3s ease;
+  }
+  .nav-links a:hover{color:var(--ink-on-dark)}
+  @media(max-width:768px){
+    .nav{padding:14px 18px}
+    .nav-links{display:none}
+  }
+
+  /* ============ HERO (DARK) ============ */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    padding:120px 40px 80px;
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(232,201,138,0.06) 0%, transparent 55%),
+      #0a0a0a;
+  }
+  .hero-grid{
+    position:relative;z-index:3;
+    width:100%;max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:1.05fr 1fr;
+    gap:60px;align-items:center;
+    min-height:calc(100vh - 200px);
+  }
+  @media(max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero{padding:110px 20px 60px}
+  }
+  .hero-tag{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.4em;
+    text-transform:uppercase;color:var(--gold-on-dark);
+    margin-bottom:32px;display:flex;align-items:center;gap:14px;
+    animation:fadeUp 1s ease .2s both;
+  }
+  .hero-tag::before{content:"";width:40px;height:1px;background:var(--gold-on-dark)}
+  .hero-title{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(56px, 9vw, 130px);line-height:0.92;letter-spacing:-0.03em;
+    margin-bottom:36px;color:var(--ink-on-dark);
+    animation:fadeUp 1s ease .4s both;
+  }
+  .hero-title i{font-style:italic;font-weight:300;color:var(--gold-on-dark)}
+  .hero-sub{
+    font-family:var(--sans);font-weight:300;
+    font-size:clamp(15px, 1.2vw, 18px);line-height:1.7;
+    max-width:500px;color:#d1ccc0;
+    margin-bottom:48px;
+    animation:fadeUp 1s ease .6s both;
+  }
+  .hero-meta{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+    padding-top:28px;border-top:1px solid var(--line-dark);
+    animation:fadeUp 1s ease .8s both;max-width:500px;
+  }
+  .hero-meta div{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim-on-dark)}
+  .hero-meta div b{display:block;color:var(--ink-on-dark);font-weight:500;font-size:13px;margin-bottom:6px;letter-spacing:0.05em}
+  .hero-visual{
+    position:relative;aspect-ratio:4/5;
+    background:url('images/collection-hero.jpeg') center/cover no-repeat;
+    border:1px solid var(--line-dark);overflow:hidden;
+  }
+  .hero-visual::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg, transparent 50%, rgba(10,10,10,0.5) 100%);
+  }
+  .hero-visual-tag{
+    position:absolute;bottom:20px;left:20px;right:20px;z-index:2;
+    font-family:var(--mono);font-size:9px;letter-spacing:0.25em;
+    text-transform:uppercase;color:#fff;
+    display:flex;justify-content:space-between;
+    padding-top:14px;border-top:1px solid rgba(255,255,255,0.4);
+  }
+  @media(max-width:1000px){.hero-visual{max-height:60vh}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ============ EDITORIAL (LIGHT) ============ */
+  .editorial{
+    padding:140px 40px;
+    background:var(--bg-light);
+    border-top:1px solid var(--bg-dark);
+    border-bottom:1px solid var(--line-light);
+    color:var(--ink-on-light);
+  }
+  @media(max-width:900px){.editorial{padding:90px 20px}}
+  .editorial-grid{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+  }
+  @media(max-width:900px){.editorial-grid{grid-template-columns:1fr;gap:40px}}
+  .editorial-label{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.4em;
+    text-transform:uppercase;color:var(--gold-on-light);
+    margin-bottom:32px;
+  }
+  .editorial h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(38px, 4.5vw, 64px);line-height:1.05;letter-spacing:-0.02em;
+    color:var(--ink-on-light);
+  }
+  .editorial h2 i{font-style:italic;color:var(--gold-on-light);font-weight:400}
+  .editorial-body p{
+    font-size:16px;line-height:1.75;color:#3a3528;
+    font-weight:300;margin-bottom:22px;
+  }
+  .editorial-body p:first-child::first-letter{
+    font-family:var(--serif);font-size:64px;float:left;line-height:0.85;
+    padding:6px 12px 0 0;color:var(--gold-on-light);font-weight:400;
+  }
+  .editorial-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    margin-top:48px;padding-top:36px;border-top:1px solid var(--line-light);
+  }
+  .editorial-stats b{
+    display:block;font-family:var(--serif);font-weight:300;
+    font-size:38px;color:var(--ink-on-light);letter-spacing:-0.02em;margin-bottom:6px;
+  }
+  .editorial-stats span{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--ink-dim-on-light);text-transform:uppercase}
+
+  /* ============ COLLECTION (LIGHT) ============ */
+  .collection{
+    padding:120px 40px 80px;
+    background:var(--bg-light);
+    color:var(--ink-on-light);
+  }
+  @media(max-width:768px){.collection{padding:80px 18px 40px}}
+  .collection-inner{max-width:1500px;margin:0 auto}
+  .collection-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:70px;flex-wrap:wrap;gap:24px;
+  }
+  .collection-head h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,6vw,84px);line-height:0.95;letter-spacing:-0.025em;
+    color:var(--ink-on-light);
+  }
+  .collection-head h2 i{font-style:italic;color:var(--gold-on-light);font-weight:400}
+  .collection-head-side{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--ink-dim-on-light);
+    text-transform:uppercase;text-align:right;line-height:1.8;
+  }
+  .collection-head-side b{color:var(--ink-on-light);font-weight:500}
+
+  /* Cards grid */
+  .grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1px;background:var(--line-light);
+    border:1px solid var(--line-light);
+  }
+  @media(max-width:1200px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--bg-dark);
+    padding:24px 22px 26px;
+    color:var(--ink-on-dark);
+    display:flex;flex-direction:column;
+    position:relative;overflow:hidden;
+  }
+  .card-num{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.3em;color:var(--ink-dim-on-dark);
+    text-transform:uppercase;display:flex;justify-content:space-between;margin-bottom:18px;
+  }
+  .card-img{
+    aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 22px;width:100%;
+    background:transparent;position:relative;
+  }
+  .card-img img{
+    max-height:100%;max-width:100%;object-fit:contain;
+    transition:opacity .4s ease, transform .6s ease;
+  }
+  .card-img img.alt{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0}
+  .card:hover .card-img img.main{opacity:0}
+  .card:hover .card-img img.alt{opacity:1}
+  .card-dots{display:flex;gap:6px;margin-bottom:12px}
+  .card-dots span{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,0.15)}
+  .card-name{
+    font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-0.01em;
+    color:var(--ink-on-dark);margin-bottom:4px;
+  }
+  .card-meta{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--ink-dim-on-dark);margin-bottom:20px;
+  }
+  .card-desc{
+    font-size:12.5px;line-height:1.55;color:#bcb6a8;
+    font-weight:300;margin-bottom:22px;
+  }
+
+  /* CONFIG inline */
+  .config-label{
+    font-family:var(--mono);font-size:9px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--ink-dim-on-dark);margin-bottom:10px;
+  }
+  .config-list{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+  .config-opt{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:11px 13px;width:100%;
+    border:1px solid var(--line-dark);
+    background:transparent;text-align:left;
+    transition:all .25s ease;cursor:pointer;
+  }
+  .config-opt:hover:not([disabled]){border-color:rgba(232,201,138,0.4)}
+  .config-opt.active{border-color:var(--gold-on-dark);background:rgba(232,201,138,0.06)}
+  .config-opt[disabled]{opacity:0.35;cursor:not-allowed}
+  .opt-info{display:flex;flex-direction:column;gap:2px}
+  .opt-name{font-family:var(--sans);font-weight:500;font-size:12px;color:var(--ink-on-dark);letter-spacing:0.01em}
+  .opt-sub{font-family:var(--mono);font-size:8.5px;letter-spacing:0.15em;color:var(--ink-dim-on-dark);text-transform:uppercase}
+  .opt-price{
+    font-family:var(--serif);font-size:16px;font-weight:300;
+    color:var(--ink-on-dark);letter-spacing:-0.01em;white-space:nowrap;
+  }
+
+  .card-cta{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 18px;width:100%;
+    background:var(--ink-on-dark);color:var(--bg-dark);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.22em;
+    text-transform:uppercase;font-weight:500;
+    text-decoration:none;text-align:center;
+    transition:all .3s ease;border:1px solid var(--ink-on-dark);
+  }
+  .card-cta:hover{background:var(--gold-on-dark);border-color:var(--gold-on-dark);color:var(--bg-dark)}
+  .card-cta-price{font-family:var(--serif);font-size:14px;font-weight:400;letter-spacing:-0.01em;text-transform:none}
+
+  /* Otto Rosso special — same structure now (with real image) */
+
+  /* ============ BRACELETS (LIGHT) ============ */
+  .bracelets{
+    padding:80px 40px 120px;
+    background:var(--bg-light);
+    color:var(--ink-on-light);
+  }
+  @media(max-width:768px){.bracelets{padding:60px 18px 80px}}
+  .bracelets-inner{max-width:1500px;margin:0 auto}
+  .bracelets-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:36px;flex-wrap:wrap;gap:24px;
+  }
+  .bracelets-head h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(38px,5vw,60px);line-height:0.95;letter-spacing:-0.025em;
+    color:var(--ink-on-light);
+  }
+  .bracelets-head h2 i{font-style:italic;color:var(--gold-on-light);font-weight:400}
+  .bracelets-head-side{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--ink-dim-on-light);
+    text-transform:uppercase;text-align:right;line-height:1.8;
+  }
+  .bracelets-head-side b{color:var(--ink-on-light);font-weight:500}
+  .bracelets-intro{
+    font-size:15px;line-height:1.7;color:#3a3528;font-weight:300;
+    max-width:680px;margin-bottom:50px;
+  }
+  .b-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:var(--line-light);border:1px solid var(--line-light);
+  }
+  @media(max-width:1100px){.b-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.b-grid{grid-template-columns:1fr}}
+  .b-card{
+    background:var(--bg-dark);color:var(--ink-on-dark);
+    padding:22px 20px;
+    display:flex;flex-direction:column;
+  }
+  .b-img{
+    aspect-ratio:1/1;background:var(--bg-dark-2);margin-bottom:18px;overflow:hidden;
+  }
+  .b-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .b-card:hover .b-img img{transform:scale(1.05)}
+  .b-label{
+    font-family:var(--mono);font-size:9px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--ink-dim-on-dark);margin-bottom:6px;
+  }
+  .b-name{
+    font-family:var(--serif);font-weight:400;font-size:18px;
+    letter-spacing:-0.01em;color:var(--ink-on-dark);margin-bottom:14px;
+  }
+  .b-cta{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:11px 14px;margin-top:auto;text-decoration:none;
+    background:var(--ink-on-dark);color:var(--bg-dark);
+    font-family:var(--mono);font-size:9.5px;letter-spacing:0.2em;
+    text-transform:uppercase;font-weight:500;
+    transition:all .3s ease;border:1px solid var(--ink-on-dark);
+  }
+  .b-cta:hover{background:var(--gold-on-dark);border-color:var(--gold-on-dark)}
+  .b-price{font-family:var(--serif);font-size:14px;font-weight:400;letter-spacing:-0.01em;text-transform:none}
+
+  /* ============ SERVICE (DARK) ============ */
+  .service{
+    background:var(--bg-dark-2);color:var(--ink-on-dark);
+    border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+    padding:80px 40px;
+  }
+  @media(max-width:768px){.service{padding:60px 18px}}
+  .service-grid{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line-dark);
+  }
+  @media(max-width:900px){.service-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.service-grid{grid-template-columns:1fr}}
+  .service-item{background:var(--bg-dark-2);padding:30px 26px}
+  .service-item .icn{
+    font-family:var(--serif);font-weight:300;font-size:36px;color:var(--gold-on-dark);
+    margin-bottom:18px;letter-spacing:-0.03em;
+  }
+  .service-item h4{
+    font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:0.1em;
+    text-transform:uppercase;margin-bottom:10px;color:var(--ink-on-dark);
+  }
+  .service-item p{font-family:var(--sans);font-weight:300;font-size:13px;line-height:1.7;color:var(--ink-dim-on-dark)}
+
+  /* ============ CONTACT (DARK) ============ */
+  .contact{padding:140px 40px;text-align:center;background:var(--bg-dark);color:var(--ink-on-dark)}
+  @media(max-width:768px){.contact{padding:80px 20px}}
+  .contact-tag{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.4em;
+    text-transform:uppercase;color:var(--gold-on-dark);margin-bottom:28px;
+  }
+  .contact h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,6vw,84px);line-height:1;letter-spacing:-0.025em;
+    margin-bottom:36px;color:var(--ink-on-dark);
+  }
+  .contact h2 i{font-style:italic;color:var(--gold-on-dark);font-weight:400}
+  .contact p{font-size:16px;color:#c4bfb3;max-width:520px;margin:0 auto 48px;font-weight:300;line-height:1.7}
+  .btn-wa{
+    display:inline-flex;align-items:center;gap:14px;
+    background:var(--ink-on-dark);color:var(--bg-dark);
+    font-family:var(--mono);font-size:12px;letter-spacing:0.2em;
+    text-transform:uppercase;font-weight:500;
+    padding:22px 40px;text-decoration:none;
+    border:1px solid var(--ink-on-dark);transition:all .4s ease;
+  }
+  .btn-wa:hover{background:var(--gold-on-dark);border-color:var(--gold-on-dark);color:var(--bg-dark)}
+  .btn-wa svg{width:18px;height:18px}
+
+  /* ============ FOOTER ============ */
+  footer{padding:60px 40px 40px;background:var(--bg-dark);border-top:1px solid var(--line-dark);text-align:center}
+  footer p{font-family:var(--mono);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-dim-on-dark);line-height:2}
+  footer p b{color:var(--gold-on-dark);font-weight:500}
+
+  /* ============ FAB ============ */
+  .fab{
+    position:fixed;bottom:24px;right:24px;z-index:80;
+    width:58px;height:58px;border-radius:50%;
+    background:#25d366;color:white;
+    display:flex;align-items:center;justify-content:center;text-decoration:none;
+    box-shadow:0 10px 36px rgba(37,211,102,0.4), 0 0 0 6px rgba(37,211,102,0.12);
+    transition:transform .3s ease;
+  }
+  .fab:hover{transform:scale(1.08)}
+  .fab svg{width:28px;height:28px}
+
+  /* Section rule (dark divider) */
+  .section-rule{
+    background:var(--bg-dark);padding:0 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--ink-dim-on-dark);
+    height:60px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+  }
+  .section-rule-inner{max-width:1500px;margin:0 auto;width:100%;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">SWATCH <b>×</b> AUDEMARS PIGUET</div>
+  <div class="nav-links">
+    <a href="#collection">Collection</a>
+    <a href="#bracelets">Bracelets</a>
+    <a href="#editorial">L'Histoire</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-tag">Édition Limitée — 2026</div>
+      <h1 class="hero-title">Royal <i>Pop</i></h1>
+      <p class="hero-sub">
+        Huit pièces. Huit langues. Huit visions du chiffre 8.
+        Une collaboration sans précédent entre Swatch et Audemars Piguet —
+        l'art horloger de la Vallée de Joux rencontre l'audace Pop des années 80.
+      </p>
+      <div class="hero-meta">
+        <div><b>Bioceramic</b>Matériau breveté Swatch</div>
+        <div><b>Sistem51</b>Mouvement mécanique manuel</div>
+        <div><b>90h+</b>Réserve de marche</div>
+        <div><b>Swiss Made</b>Origine Suisse</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-tag">
+        <span>Collection Royal Pop</span>
+        <span>08 modèles</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- EDITORIAL (LIGHT) -->
+<section class="editorial" id="editorial">
+  <div class="editorial-grid">
+    <div>
+      <div class="editorial-label">Chapitre 01 — La Rencontre</div>
+      <h2>Deux maisons.<br>Un même <i>terrain</i><br>de jeu.</h2>
+    </div>
+    <div class="editorial-body">
+      <p>Depuis 1875, Audemars Piguet écrit l'histoire de la haute horlogerie depuis Le Brassus. Swatch, depuis 1983, a redéfini la montre comme objet de culture pop. La rencontre des deux mondes donne naissance à la Royal Pop — une montre de poche en Bioceramic qui reprend les codes mythiques de la Royal Oak : lunette octogonale, huit vis hexagonales, motif Petite Tapisserie.</p>
+      <p>Le mouvement Sistem51 manuel inédit — quinze brevets actifs, spiral Nivachron antimagnétique — anime chaque pièce avec plus de 90 heures de réserve de marche. Une prouesse mécanique habillée des couleurs vives du Pop Art.</p>
+      <div class="editorial-stats">
+        <div><b>08</b><span>Modèles uniques</span></div>
+        <div><b>40<small style="font-size:18px">mm</small></b><span>Diamètre boîtier</span></div>
+        <div><b>15</b><span>Brevets actifs</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule">
+  <div class="section-rule-inner">
+    <span>Royal Pop Collection</span>
+    <span>Référence — SSX03</span>
+  </div>
+</div>
+
+<!-- COLLECTION (LIGHT) -->
+<section class="collection" id="collection">
+  <div class="collection-inner">
+    <div class="collection-head">
+      <h2>La <i>Collection</i></h2>
+      <div class="collection-head-side">
+        <b>Huit modèles · Édition limitée</b><br>
+        Trois configurations disponibles<br>
+        Livraison France sous 24/72h
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- BRACELETS (LIGHT) -->
+<section class="bracelets" id="bracelets">
+  <div class="bracelets-inner">
+    <div class="bracelets-head">
+      <h2>Les <i>Bracelets</i></h2>
+      <div class="bracelets-head-side">
+        <b>Cinq bracelets assortis</b><br>
+        Compatibles avec le format gousset<br>
+        Conversion en montre-bracelet
+      </div>
+    </div>
+    <p class="bracelets-intro">
+      Chaque bracelet en caoutchouc est conçu pour s'accorder parfaitement avec sa montre Royal Pop. Disponibles à l'unité pour transformer votre gousset en montre-bracelet, ou pour compléter votre collection.
+    </p>
+    <div class="b-grid" id="braceletsGrid"></div>
+  </div>
+</section>
+
+<!-- SERVICE (DARK) -->
+<section class="service" id="service">
+  <div class="service-grid">
+    <div class="service-item"><div class="icn">01</div><h4>Livraison 24/72h</h4><p>Expédition sécurisée partout en France métropolitaine, sous 24 à 72 heures après confirmation de votre commande.</p></div>
+    <div class="service-item"><div class="icn">02</div><h4>Authentification</h4><p>Chaque pièce est livrée dans son écrin d'origine Swatch × Audemars Piguet, accompagnée de sa carte de garantie.</p></div>
+    <div class="service-item"><div class="icn">03</div><h4>Paiement sécurisé</h4><p>Transaction directement avec notre conseiller par WhatsApp. Plusieurs modalités de règlement disponibles.</p></div>
+    <div class="service-item"><div class="icn">04</div><h4>Conseil personnalisé</h4><p>Notre équipe vous accompagne dans le choix du modèle et la configuration — gousset, bracelet ou les deux.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT (DARK) -->
+<section class="contact" id="contact">
+  <div class="contact-tag">Commander · Se renseigner</div>
+  <h2>Parlons de votre <i>pièce</i>.</h2>
+  <p>Contactez directement notre conseiller sur WhatsApp pour finaliser votre commande, vérifier les disponibilités et organiser la livraison sous 24 à 72 heures partout en France.</p>
+  <a class="btn-wa" href="https://wa.me/33662064750" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8 1.5.7 2.1.7 2.8.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.4 1.3 4.9L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+    Contacter sur WhatsApp
+  </a>
+</section>
+
+<footer>
+  <p>
+    <b>ROYAL POP</b> — Swatch × Audemars Piguet<br>
+    Distribué en France · Livraison sous 24/72h · WhatsApp 06 62 06 47 50<br>
+    <span style="opacity:0.5">© 2026 — Tous droits réservés</span>
+  </p>
+</footer>
+
+<a class="fab" href="https://wa.me/33662064750" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8 1.5.7 2.1.7 2.8.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.4 1.3 4.9L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+</a>
+
+<script>
+const products = [
+  {id:"ocho-negro",name:"Ocho Negro",translation:"Espagnol · Huit Noir",dots:["#0a0a0a","#ffffff"],pocket:"images/ocho-negro.jpeg",watch:"images/ocho-negro-watch.webp",desc:"Boîtier noir Bioceramic, lunette blanche céramique. Le contraste absolu.",hasBracelet:true,savonnette:false},
+  {id:"orenji-hachi",name:"Orenji Hachi",translation:"Japonais · Huit Orange",dots:["#1e2a5e","#ff6b1a"],pocket:"images/orenji-hachi.jpeg",watch:"images/orenji-hachi-watch.webp",desc:"Bleu nuit profond, vis hexagonales orange vif. Audacieux et calibré.",hasBracelet:true,savonnette:false},
+  {id:"green-eight",name:"Green Eight",translation:"Anglais · Huit V

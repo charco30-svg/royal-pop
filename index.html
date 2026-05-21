@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark" />
+<meta name="supported-color-schemes" content="dark" />
+<meta name="theme-color" content="#0a0a0a" />
+<title>ROYAL POP — Swatch × Audemars Piguet</title>
+<meta name="description" content="La collection Royal Pop, fruit de la collaboration Swatch × Audemars Piguet. Montres de poche en Bioceramic, livraison 24/72h partout en France." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Geist+Mono:wght@300;400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: dark only;
+    --bg:#0a0a0a;
+    --bg-2:#111111;
+    --ink:#f4f1ea;
+    --ink-dim:#9a958a;
+    --line:#1f1f1f;
+    --gold:#d4b06a;
+    --gold-bright:#e8c98a;
+    --pop:#f4f1ea;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter Tight','Helvetica Neue',sans-serif;
+    --mono:'Geist Mono','SF Mono',monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;background-color:#0a0a0a;color-scheme:dark}
+  body{
+    background-color:#0a0a0a !important;
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    color-scheme:dark;
+  }
+  /* Force dark background on every major section regardless of iOS auto-light */
+  section, header, footer, nav, .section-rule, .editorial, .collection,
+  .bracelets, .contact, .hero{
+    background-color:#0a0a0a;
+  }
+  .service{background-color:#111111}
+  img,video{max-width:100%;display:block}
+
+  /* ------------- INTRO VIDEO OVERLAY ------------- */
+  .intro-overlay{
+    position:fixed;inset:0;z-index:200;
+    background:#000;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    opacity:1;
+    transition:opacity .6s ease;
+  }
+  .intro-overlay.closing{opacity:0;pointer-events:none}
+  .intro-video{
+    width:100%;height:100%;
+    object-fit:cover;
+    pointer-events:none;
+  }
+  .intro-close{
+    position:absolute;top:24px;right:24px;
+    z-index:5;
+    width:48px;height:48px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.25);
+    color:#fff;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;font-weight:300;
+    transition:all .25s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .intro-close:hover, .intro-close:active{
+    background:rgba(255,255,255,0.95);color:#000;
+    border-color:transparent;transform:scale(1.05);
+  }
+  .intro-skip{
+    position:absolute;bottom:32px;left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.25);
+    color:#fff;
+    cursor:pointer;
+    padding:12px 24px;
+    font-family:var(--mono);font-size:11px;letter-spacing:0.3em;
+    text-transform:uppercase;
+    transition:all .25s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .intro-skip:hover, .intro-skip:active{
+    background:rgba(255,255,255,0.95);color:#000;border-color:transparent;
+  }
+  body.intro-active{overflow:hidden}
+
+  /* ------------- NAV ------------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 40px;
+    background:rgba(10,10,10,0.75);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-logo{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .nav-logo b{color:var(--gold-bright);font-weight:500}
+  .nav-links{display:flex;gap:32px}
+  .nav-links a{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    text-decoration:none;
+    transition:color .3s ease;
+  }
+  .nav-links a:hover{color:var(--ink)}
+  @media(max-width:768px){
+    .nav{padding:18px 20px}
+    .nav-links{display:none}
+  }
+
+  /* ------------- HERO ------------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    padding:130px 40px 80px;
+    background:
+      radial-gradient(ellipse at 75% 50%, rgba(212,176,106,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 80%, rgba(60,100,150,0.04) 0%, transparent 50%),
+      #0a0a0a;
+  }
+  .hero-content{
+    position:relative;z-index:3;
+    width:100%;max-width:1400px;margin:0 auto;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:80px;
+    align-items:center;
+    min-height:calc(100vh - 210px);
+  }
+  @media(max-width:1000px){
+    .hero-content{grid-template-columns:1fr;gap:48px}
+    .hero{padding:120px 24px 60px}
+  }
+  .hero-text{position:relative;z-index:3}
+  .hero-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    background:url('images/hero-collection.jpg') center/cover no-repeat;
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-visual::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg, rgba(10,10,10,0.15) 0%, transparent 40%, rgba(10,10,10,0.5) 100%);
+  }
+  .hero-visual-tag{
+    position:absolute;bottom:24px;left:24px;right:24px;
+    z-index:2;
+    font-family:var(--mono);font-size:10px;letter-spacing:0.25em;
+    text-transform:uppercase;color:var(--ink);
+    display:flex;justify-content:space-between;
+    padding-top:16px;
+    border-top:1px solid rgba(244,241,234,0.3);
+  }
+  @media(max-width:1000px){.hero-visual{max-height:50vh}}
+  .hero-tag{
+    font-family:var(--mono);
+    font-size:11px;letter-spacing:0.4em;
+    text-transform:uppercase;color:var(--gold-bright);
+    margin-bottom:32px;
+    display:flex;align-items:center;gap:14px;
+    animation:fadeUp 1s ease .2s both;
+  }
+  .hero-tag::before{content:"";width:40px;height:1px;background:var(--gold-bright)}
+  .hero-title{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:clamp(58px, 9vw, 140px);
+    line-height:0.92;
+    letter-spacing:-0.03em;
+    margin-bottom:36px;
+    color:var(--ink);
+    animation:fadeUp 1s ease .4s both;
+  }
+  .hero-title i{
+    font-style:italic;
+    font-weight:300;
+    color:var(--gold-bright);
+  }
+  .hero-sub{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:clamp(15px, 1.3vw, 18px);
+    line-height:1.7;
+    max-width:520px;
+    color:#cfcabe;
+    margin-bottom:48px;
+    animation:fadeUp 1s ease .6s both;
+  }
+  .hero-meta{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+    animation:fadeUp 1s ease .8s both;
+    max-width:520px;
+  }
+  .hero-meta div{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim)}
+  .hero-meta div b{display:block;color:var(--ink);font-weight:500;font-size:13px;margin-bottom:6px;letter-spacing:0.05em}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ------------- EDITORIAL ------------- */
+  .editorial{
+    padding:140px 40px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--bg);
+  }
+  .editorial-grid{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+  }
+  @media(max-width:900px){.editorial-grid{grid-template-columns:1fr;gap:40px}.editorial{padding:80px 24px}}
+  .editorial-label{
+    font-family:var(--mono);
+    font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold-bright);
+    margin-bottom:32px;
+  }
+  .editorial h2{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:clamp(36px, 4.5vw, 64px);
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+  }
+  .editorial h2 i{font-style:italic;color:var(--gold-bright);font-weight:400}
+  .editorial-body p{
+    font-size:16px;line-height:1.75;color:#c4bfb3;
+    font-weight:300;
+    margin-bottom:22px;
+  }
+  .editorial-body p:first-child::first-letter{
+    font-family:var(--serif);font-size:64px;float:left;line-height:0.85;
+    padding:6px 12px 0 0;color:var(--gold-bright);font-weight:400;
+  }
+  .editorial-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    margin-top:48px;padding-top:36px;border-top:1px solid var(--line);
+  }
+  .editorial-stats div{}
+  .editorial-stats b{
+    display:block;font-family:var(--serif);font-weight:300;
+    font-size:38px;color:var(--ink);letter-spacing:-0.02em;margin-bottom:6px;
+  }
+  .editorial-stats span{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--ink-dim);text-transform:uppercase}
+
+  /* ------------- COLLECTION ------------- */
+  .collection{padding:140px 40px 80px;max-width:1500px;margin:0 auto}
+  @media(max-width:768px){.collection{padding:80px 20px 40px}}
+  .collection-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:80px;flex-wrap:wrap;gap:24px;
+  }
+  .collection-head h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,6vw,84px);line-height:0.95;letter-spacing:-0.025em;
+    color:var(--ink);
+  }
+  .collection-head h2 i{font-style:italic;color:var(--gold-bright);font-weight:400}
+  .collection-head-side{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--ink-dim);
+    text-transform:uppercase;text-align:right;line-height:1.8;
+  }
+  .collection-head-side b{color:var(--ink);font-weight:500}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    position:relative;
+    background:var(--bg);
+    padding:32px 28px 28px;
+    transition:background .5s ease;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;
+    background:var(--card-color, transparent);
+    opacity:0;transition:opacity .6s ease;
+    z-index:0;
+  }
+  .card:hover::before{opacity:0.08}
+  .card > *{position:relative;z-index:1}
+
+  .card-num{
+    font-family:var(--mono);
+    font-size:10px;letter-spacing:0.3em;color:var(--ink-dim);
+    text-transform:uppercase;
+    display:flex;justify-content:space-between;
+    margin-bottom:24px;
+  }
+  .card-img{
+    aspect-ratio:3/4;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 24px;
+    position:relative;
+    cursor:pointer;
+  }
+  .card-img img{
+    max-height:100%;max-width:100%;
+    object-fit:contain;
+    transition:transform .8s cubic-bezier(.2,.7,.2,1), opacity .4s ease;
+  }
+  .card-img img.alt{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%) scale(0.9);
+    opacity:0;
+  }
+  .card:hover .card-img img.main{opacity:0;transform:scale(0.92)}
+  .card:hover .card-img img.alt{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .card-name{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:24px;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .card-meta{
+    font-family:var(--mono);
+    font-size:10px;letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#a8a397;
+    margin-bottom:20px;
+  }
+
+  /* ----- Config integrated in card ----- */
+  .card-config{
+    margin-top:auto;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+  .card-config-label{
+    font-family:var(--mono);font-size:9px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--ink-dim);
+    margin-bottom:10px;
+  }
+  .card-config-opts{
+    display:flex;flex-direction:column;gap:6px;
+    margin-bottom:14px;
+  }
+  .card-config-opt{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:11px 14px;
+    background:transparent;
+    border:1px solid var(--line);
+    cursor:pointer;
+    transition:all .25s ease;
+    color:var(--ink);
+    font-family:var(--sans);
+    text-align:left;
+    width:100%;
+  }
+  .card-config-opt:hover{border-color:#444;background:rgba(255,255,255,0.02)}
+  .card-config-opt.active{
+    border-color:var(--gold-bright);
+    background:rgba(212,176,106,0.07);
+  }
+  .card-config-opt[disabled]{
+    opacity:0.35;cursor:not-allowed;
+  }
+  .card-config-opt[disabled]:hover{
+    border-color:var(--line);background:transparent;
+  }
+  .opt-name{
+    font-size:12px;font-weight:500;letter-spacing:0.01em;
+  }
+  .opt-price{
+    font-family:var(--serif);font-size:15px;font-weight:300;
+    letter-spacing:-0.01em;
+  }
+  .card-action{
+    display:flex;justify-content:space-between;align-items:center;
+    gap:12px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+  .card-total{
+    font-family:var(--mono);font-size:9px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--ink-dim);
+  }
+  .card-total b{
+    display:block;
+    font-family:var(--serif);font-size:22px;font-weight:300;
+    color:var(--ink);letter-spacing:-0.01em;margin-top:2px;
+  }
+  .card-buy{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--ink);color:var(--bg);
+    font-family:var(--mono);font-size:10px;letter-spacing:0.2em;
+    text-transform:uppercase;font-weight:500;
+    padding:14px 18px;text-decoration:none;
+    border:1px solid var(--ink);
+    transition:all .3s ease;
+    white-space:nowrap;
+  }
+  .card-buy:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
+  .card-details-link{
+    display:block;text-align:center;margin-top:14px;
+    font-family:var(--mono);font-size:9px;letter-spacing:0.25em;
+    text-transform:uppercase;color:var(--ink-dim);
+    text-decoration:none;cursor:pointer;
+    padding:6px;
+    transition:color .3s ease;
+  }
+  .card-details-link:hover{color:var(--gold-bright)}
+
+  /* color dot */
+  .card-color-dots{display:flex;gap:6px;margin-bottom:14px}
+  .card-color-dots span{
+    width:10px;height:10px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+
+  /* Special Otto card */
+  .card-special .card-img-special{
+    aspect-ratio:3/4;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    background:radial-gradient(circle at center, rgba(193,57,43,0.18), transparent 70%);
+  }
+  .otto-visual{
+    position:relative;
+    width:78%;aspect-ratio:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .otto-ring{
+    position:absolute;inset:0;
+    border:1px solid rgba(193,57,43,0.5);
+    clip-path:polygon(
+      50% 0%, 85% 15%, 100% 50%, 85% 85%,
+      50% 100%, 15% 85%, 0% 50%, 15% 15%
+    );
+    background:radial-gradient(circle at center, rgba(193,57,43,0.08), transparent 65%);
+  }
+  .otto-num{
+    font-family:var(--serif);
+    font-weight:300;font-size:96px;
+    color:#c1392b;
+    line-height:1;letter-spacing:-0.04em;
+    text-shadow:0 0 40px rgba(193,57,43,0.4);
+  }
+  .otto-label{
+    font-family:var(--mono);
+    font-size:9px;letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:rgba(255,180,180,0.7);
+    margin-top:14px;
+  }
+
+  /* ------------- BRACELETS SECTION ------------- */
+  .bracelets{
+    padding:140px 40px 80px;
+    max-width:1500px;margin:0 auto;
+  }
+  @media(max-width:768px){.bracelets{padding:80px 20px 40px}}
+  .bracelets-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:60px;flex-wrap:wrap;gap:24px;
+  }
+  .bracelets-head h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,5vw,64px);line-height:0.95;letter-spacing:-0.025em;
+    color:var(--ink);
+  }
+  .bracelets-head h2 i{font-style:italic;color:var(--gold-bright);font-weight:400}
+  .bracelets-head-side{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--ink-dim);
+    text-transform:uppercase;text-align:right;line-height:1.8;
+  }
+  .bracelets-head-side b{color:var(--ink);font-weight:500}
+  .bracelets-intro{
+    font-size:15px;line-height:1.75;color:#c4bfb3;
+    font-weight:300;max-width:680px;
+    margin-bottom:60px;
+  }
+
+  .bracelets-grid{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media(max-width:1100px){.bracelets-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.bracelets-grid{grid-template-columns:1fr}}
+  .bracelet-card{
+    background:var(--bg);
+    padding:24px 22px 22px;
+    cursor:pointer;
+    transition:background .4s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .bracelet-card::before{
+    content:"";position:absolute;inset:0;
+    background:var(--card-color, transparent);
+    opacity:0;transition:opacity .5s ease;
+  }
+  .bracelet-card:hover::before{opacity:0.06}
+  .bracelet-card > *{position:relative;z-index:1}
+  .bracelet-img{
+    aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+    background:var(--bg-2);
+    overflow:hidden;
+  }
+  .bracelet-img img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .bracelet-card:hover .bracelet-img img{transform:scale(1.05)}
+  .bracelet-label{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px;
+  }
+  .bracelet-name{
+    font-family:var(--serif);font-weight:400;font-size:18px;
+    letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;
+  }
+  .bracelet-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:14px;border-top:1px solid var(--line);
+  }
+  .bracelet-price{
+    font-family:var(--serif);font-weight:300;font-size:18px;color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .bracelet-cta{
+    font-family:var(--mono);font-size:9px;letter-spacing:0.25em;
+    text-transform:uppercase;color:var(--gold-bright);
+    display:flex;align-items:center;gap:6px;
+  }
+  .bracelet-cta::after{content:"→";transition:transform .3s ease}
+  .bracelet-card:hover .bracelet-cta::after{transform:translateX(4px)}
+
+  /* ------------- SERVICE STRIP ------------- */
+  .service{
+    background:var(--bg-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:80px 40px;
+    margin-top:80px;
+  }
+  .service-grid{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);
+  }
+  @media(max-width:900px){.service-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.service-grid{grid-template-columns:1fr}}
+  .service-item{
+    background:var(--bg-2);
+    padding:32px 28px;
+  }
+  .service-item .icn{
+    font-family:var(--serif);font-weight:300;
+    font-size:36px;color:var(--gold-bright);
+    margin-bottom:18px;letter-spacing:-0.03em;
+  }
+  .service-item h4{
+    font-family:var(--sans);font-weight:500;font-size:13px;
+    letter-spacing:0.1em;text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .service-item p{
+    font-family:var(--sans);font-weight:300;font-size:13px;
+    line-height:1.7;color:var(--ink-dim);
+  }
+
+  /* ------------- CONTACT ------------- */
+  .contact{
+    padding:140px 40px;
+    text-align:center;
+    border-top:1px solid var(--line);
+    background:var(--bg);
+  }
+  .contact-tag{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.4em;
+    text-transform:uppercase;color:var(--gold-bright);margin-bottom:28px;
+  }
+  .contact h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,6vw,84px);line-height:1;letter-spacing:-0.025em;
+    margin-bottom:36px;
+    color:var(--ink);
+  }
+  .contact h2 i{font-style:italic;color:var(--gold-bright);font-weight:400}
+  .contact p{
+    font-size:16px;color:#c4bfb3;max-width:520px;margin:0 auto 48px;
+    font-weight:300;line-height:1.7;
+  }
+  .btn-wa{
+    display:inline-flex;align-items:center;gap:14px;
+    background:var(--ink);color:var(--bg);
+    font-family:var(--mono);font-size:12px;letter-spacing:0.2em;
+    text-transform:uppercase;font-weight:500;
+    padding:22px 40px;text-decoration:none;
+    border:1px solid var(--ink);
+    transition:all .4s ease;
+  }
+  .btn-wa:hover{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--bg)}
+  .btn-wa svg{width:18px;height:18px}
+
+  /* ------------- FOOTER ------------- */
+  footer{
+    padding:60px 40px 40px;
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+  footer p{
+    font-family:var(--mono);font-size:10px;
+    letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--ink-dim);line-height:2;
+  }
+  footer p b{color:var(--gold-bright);font-weight:500}
+
+  /* ------------- FLOATING WA ------------- */
+  .fab{
+    position:fixed;bottom:28px;right:28px;z-index:80;
+    width:60px;height:60px;border-radius:50%;
+    background:#25d366;color:white;
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;
+    box-shadow:0 12px 40px rgba(37,211,102,0.4), 0 0 0 6px rgba(37,211,102,0.12);
+    transition:transform .3s ease;
+  }
+  .fab:hover{transform:scale(1.08)}
+  .fab svg{width:30px;height:30px}
+
+  /* ------------- MODAL ------------- */
+  .modal-bg{
+    position:fixed;inset:0;
+    background:rgba(5,5,5,0.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    z-index:100;
+    display:none;align-items:center;justify-content:center;
+    padding:24px;
+    opacity:0;transition:opacity .35s ease;
+  }
+  .modal-bg.open{display:flex;opacity:1}
+  .modal{
+    background:var(--bg);
+    border:1px solid var(--line);
+    max-width:1100px;width:100%;max-height:92vh;
+    overflow-y:auto;
+    position:relative;
+    display:grid;grid-template-columns:1.1fr 1fr;
+    transform:translateY(20px);transition:transform .4s ease;
+  }
+  .modal-bg.open .modal{transform:translateY(0)}
+  @media(max-width:860px){.modal{grid-template-columns:1fr}}
+  .modal-close{
+    position:absolute;top:18px;right:18px;z-index:5;
+    background:transparent;color:var(--ink);
+    border:1px solid var(--line);
+    width:42px;height:42px;
+    cursor:pointer;
+    font-family:var(--mono);font-size:18px;
+    transition:all .3s ease;
+  }
+  .modal-close:hover{background:var(--ink);color:var(--bg)}
+  .modal-media{
+    background:var(--bg-2);
+    padding:60px 40px;
+    display:flex;align-items:center;justify-content:center;
+    min-height:400px;
+    position:relative;
+  }
+  .modal-media-bg{
+    position:absolute;inset:0;
+    background:var(--card-color,transparent);
+    opacity:0.06;
+  }
+  .modal-media img{
+    max-width:100%;max-height:520px;
+    object-fit:contain;
+    position:relative;z-index:1;
+    transition:opacity .4s ease, transform .4s ease;
+  }
+  .modal-body{padding:60px 48px;display:flex;flex-direction:column}
+  @media(max-width:560px){.modal-media{padding:30px 20px;min-height:300px}.modal-body{padding:36px 24px}}
+  .modal-tag{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--gold-bright);margin-bottom:18px;
+  }
+  .modal-title{
+    font-family:var(--serif);font-weight:300;
+    font-size:48px;letter-spacing:-0.025em;line-height:1;
+    margin-bottom:8px;
+  }
+  .modal-trans{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;
+    color:var(--ink-dim);text-transform:uppercase;margin-bottom:28px;
+  }
+  .modal-desc{
+    font-size:14px;line-height:1.7;color:var(--ink-dim);
+    font-weight:300;margin-bottom:32px;
+  }
+
+  /* CONFIG selector */
+  .config-label{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;
+  }
+  .config-options{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+  .config-opt{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 22px;
+    border:1px solid var(--line);
+    cursor:pointer;
+    transition:all .3s ease;
+    background:transparent;
+  }
+  .config-opt:hover{border-color:var(--ink-dim)}
+  .config-opt.active{border-color:var(--gold-bright);background:rgba(212,176,106,0.06)}
+  .config-opt[disabled]{opacity:0.35;cursor:not-allowed}
+  .config-opt-info{display:flex;flex-direction:column;gap:4px;text-align:left}
+  .config-opt-name{
+    font-family:var(--sans);font-weight:500;font-size:14px;
+    letter-spacing:0.02em;color:var(--ink);
+  }
+  .config-opt-sub{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.15em;
+    color:var(--ink-dim);text-transform:uppercase;
+  }
+  .config-opt-price{
+    font-family:var(--serif);font-size:20px;font-weight:300;
+    letter-spacing:-0.01em;color:var(--ink);
+  }
+  .modal-footer{
+    margin-top:auto;padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .modal-total{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.25em;
+    text-transform:uppercase;color:var(--ink-dim);
+  }
+  .modal-total b{
+    display:block;font-family:var(--serif);
+    font-size:32px;font-weight:300;color:var(--ink);
+    letter-spacing:-0.02em;margin-top:4px;
+  }
+  .btn-buy{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--ink);color:var(--bg);
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;
+    text-transform:uppercase;font-weight:500;
+    padding:18px 28px;text-decoration:none;
+    border:1px solid var(--ink);
+    transition:all .3s ease;
+  }
+  .btn-buy:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
+
+  .body-noscroll{overflow:hidden}
+
+  /* ------------- SECTION DIVIDER ------------- */
+  .section-rule{
+    max-width:1500px;margin:0 auto;padding:0 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--ink-dim);
+    height:60px;border-bottom:1px solid var(--line);
+  }
+</style>
+</head>
+<body class="intro-active">
+
+<!-- INTRO VIDEO -->
+<div class="intro-overlay" id="introOverlay">
+  <video class="intro-video" id="introVideo" autoplay muted playsinline>
+    <source src="images/intro.mp4" type="video/mp4">
+  </video>
+  <button class="intro-close" id="introClose" aria-label="Fermer">×</button>
+  <button class="intro-skip" id="introSkip">Découvrir la collection</button>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">SWATCH <b>×</b> AUDEMARS PIGUET</div>
+  <div class="nav-links">
+    <a href="#collection">Collection</a>
+    <a href="#bracelets">Bracelets</a>
+    <a href="#editorial">L'Histoire</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">Édition Limitée — 2026</div>
+      <h1 class="hero-title">Royal <i>Pop</i></h1>
+      <p class="hero-sub">
+        Huit pièces. Huit langues. Huit visions du chiffre 8.
+        Une collaboration sans précédent entre Swatch et Audemars Piguet —
+        l'art horloger de la Vallée de Joux rencontre l'audace Pop des années 80.
+      </p>
+      <div class="hero-meta">
+        <div><b>Bioceramic</b>Matériau breveté Swatch</div>
+        <div><b>Sistem51</b>Mouvement mécanique manuel</div>
+        <div><b>90h+</b>Réserve de marche</div>
+        <div><b>Swiss Made</b>Origine Suisse</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-tag">
+        <span>Collection Royal Pop</span>
+        <span>08 modèles</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- EDITORIAL -->
+<section class="editorial" id="editorial">
+  <div class="editorial-grid">
+    <div>
+      <div class="editorial-label">Chapitre 01 — La Rencontre</div>
+      <h2>Deux maisons.<br>Un même <i>terrain</i><br>de jeu.</h2>
+    </div>
+    <div class="editorial-body">
+      <p>Depuis 1875, Audemars Piguet écrit l'histoire de la haute horlogerie depuis Le Brassus. Swatch, depuis 1983, a redéfini la montre comme objet de culture pop. La rencontre des deux mondes donne naissance à la Royal Pop — une montre de poche en Bioceramic qui reprend les codes mythiques de la Royal Oak : lunette octogonale, huit vis hexagonales, motif Petite Tapisserie.</p>
+      <p>Le mouvement Sistem51 manuel inédit — quinze brevets actifs, spiral Nivachron antimagnétique — anime chaque pièce avec plus de 90 heures de réserve de marche. Une prouesse mécanique habillée des couleurs vives du Pop Art.</p>
+      <div class="editorial-stats">
+        <div><b>08</b><span>Modèles uniques</span></div>
+        <div><b>40<small style="font-size:18px">mm</small></b><span>Diamètre du boîtier</span></div>
+        <div><b>15</b><span>Brevets actifs</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule">
+  <span>Royal Pop Collection</span>
+  <span>Référence — SSX03</span>
+</div>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="collection-head">
+    <h2>La <i>Collection</i></h2>
+    <div class="collection-head-side">
+      <b>Huit modèles · Édition limitée</b><br>
+      Disponible en format gousset<br>
+      ou avec bracelet assorti
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- BRACELETS -->
+<section class="bracelets" id="bracelets">
+  <div class="bracelets-head">
+    <h2>Les <i>Bracelets</i></h2>
+    <div class="bracelets-head-side">
+      <b>Cinq bracelets assortis</b><br>
+      Compatibles avec votre format gousset<br>
+      Conversion en montre-bracelet
+    </div>
+  </div>
+  <p class="bracelets-intro">
+    Chaque bracelet en caoutchouc est conçu pour s'accorder parfaitement avec sa montre Royal Pop. Disponibles à l'unité pour transformer votre gousset en montre-bracelet, ou pour compléter votre collection.
+  </p>
+  <div class="bracelets-grid" id="braceletsGrid"></div>
+</section>
+
+<!-- SERVICE -->
+<section class="service" id="service">
+  <div class="service-grid">
+    <div class="service-item">
+      <div class="icn">01</div>
+      <h4>Livraison 24/72h</h4>
+      <p>Expédition sécurisée partout en France métropolitaine, sous 24 à 72 heures après confirmation de votre commande.</p>
+    </div>
+    <div class="service-item">
+      <div class="icn">02</div>
+      <h4>Authentification</h4>
+      <p>Chaque pièce est livrée dans son écrin d'origine Swatch × Audemars Piguet, accompagnée de sa carte de garantie.</p>
+    </div>
+    <div class="service-item">
+      <div class="icn">03</div>
+      <h4>Paiement sécurisé</h4>
+      <p>Transaction directement avec notre conseiller par WhatsApp. Plusieurs modalités de règlement disponibles.</p>
+    </div>
+    <div class="service-item">
+      <div class="icn">04</div>
+      <h4>Conseil personnalisé</h4>
+      <p>Notre équipe vous accompagne dans le choix du modèle et la configuration — gousset seul ou avec bracelet assorti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-tag">Commander · Se renseigner</div>
+  <h2>Parlons de votre <i>pièce</i>.</h2>
+  <p>Contactez directement notre conseiller sur WhatsApp pour finaliser votre commande, vérifier les disponibilités et organiser la livraison sous 24 à 72 heures partout en France.</p>
+  <a class="btn-wa" href="https://wa.me/33662064750" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8 1.5.7 2.1.7 2.8.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.4 1.3 4.9L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+    Contacter sur WhatsApp
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <b>ROYAL POP</b> — Swatch × Audemars Piguet<br>
+    Distribué en France · Livraison sous 24/72h · WhatsApp 06 62 06 47 50<br>
+    <span style="opacity:0.5">© 2026 — Tous droits réservés</span>
+  </p>
+</footer>
+
+<!-- FLOATING WA -->
+<a class="fab" href="https://wa.me/33662064750" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8 1.5.7 2.1.7 2.8.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.4 1.3 4.9L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+</a>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-media">
+      <div class="modal-media-bg" id="modalMediaBg"></div>
+      <img id="modalImg" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag" id="modalTag">Royal Pop · 01</div>
+      <h3 class="modal-title" id="modalTitle">—</h3>
+      <div class="modal-trans" id="modalTrans">—</div>
+      <p class="modal-desc" id="modalDesc">—</p>
+
+      <div class="config-label">Configuration</div>
+      <div class="config-options" id="configOptions"></div>
+
+      <div class="modal-footer">
+        <div class="modal-total">Total<br><b id="modalTotal">—</b></div>
+        <a class="btn-buy" id="modalBuy" href="#" target="_blank">Commander →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// INTRO VIDEO
+(function(){
+  const overlay = document.getElementById('introOverlay');
+  const video = document.getElementById('introVideo');
+  const close = document.getElementById('introClose');
+  const skip = document.getElementById('introSkip');
+  function closeIntro(){
+    overlay.classList.add('closing');
+    document.body.classList.remove('intro-active');
+    try{ video.pause(); }catch(e){}
+    setTimeout(() => { overlay.remove(); }, 700);
+  }
+  close.addEventListener('click', closeIntro);
+  skip.addEventListener('click', closeIntro);
+  video.addEventListener('ended', closeIntro);
+  // safety: also dismiss on Escape
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && document.body.classList.contains('intro-active')) closeIntro(); });
+})();
+</script>
+
+<script>
+const products = [
+  {
+    id:"ocho-negro",
+    name:"Ocho Negro",
+    translation:"Espagnol · Huit Noir",
+    color:"#1a1a1a",
+    dots:["#0a0a0a","#ffffff"],
+    pocket:"images/ocho-negro.jpeg",
+    watch:"images/ocho-negro-watch.webp",
+    desc:"Le contraste absolu. Boîtier noir Bioceramic, lunette blanche céramique, vis noires apparentes. Le tourbillon décoratif visible au dos célèbre le savoir-faire mécanique. La pièce la plus intemporelle de la collection.",
+    hasBracelet:true
+  },
+  {
+    id:"orenji-hachi",
+    name:"Orenji Hachi",
+    translation:"Japonais · Huit Orange",
+    color:"#1e2a5e",
+    dots:["#1e2a5e","#ff6b1a"],
+    pocket:"images/orenji-hachi.jpeg",
+    watch:"images/orenji-hachi-watch.webp",
+    desc:"Bleu nuit profond ponctué d'orange vif. Les vis hexagonales orange tranchent sur la lunette navy mate. Une référence directe au design japonais des années 80, audacieux et calibré.",
+    hasBracelet:true
+  },
+  {
+    id:"green-eight",
+    name:"Green Eight",
+    translation:"Anglais · Huit Vert",
+    color:"#3a8a3f",
+    dots:["#3a8a3f","#9ed18c"],
+    pocket:"images/green-eight.jpeg",
+    watch:"images/green-eight-watch.webp",
+    desc:"Deux nuances de vert dialoguent : sauge profond pour le boîtier, lime pour les accents. Une pièce végétale, organique, qui évoque la nature suisse — terre d'origine d'Audemars Piguet.",
+    hasBracelet:true
+  },
+  {
+    id:"otg-roz",
+    name:"OTG Roz",
+    translation:"Romanche · Huit Rose",
+    color:"#fcd34d",
+    dots:["#fcd34d","#5eead4","#fb7185"],
+    pocket:"images/otg-roz.jpeg",
+    watch:"images/otg-roz-watch.webp",
+    desc:"L'égérie de la collection. Boîtier jaune solaire, cadran turquoise petite tapisserie, sous-compteur rose à 6h. Version Savonnette avec petite seconde — la quintessence de l'esprit Pop Art revisité par la haute horlogerie.",
+    hasBracelet:true,
+    savonnette:true
+  },
+  {
+    id:"lan-ba",
+    name:"Làn Bā",
+    translation:"Chinois · Huit Bleu",
+    color:"#3b5998",
+    dots:["#3b5998","#9bc4e2"],
+    pocket:"images/lan-ba.jpeg",
+    watch:"images/lan-ba-watch.webp",
+    desc:"Camaïeu de bleus en bicolore. Boîtier bleu denim, lunette bleu ciel, motif Petite Tapisserie sombre. Version Savonnette avec petite seconde à 6h — l'élégance discrète d'un classique réinventé.",
+    hasBracelet:true,
+    savonnette:true
+  },
+  {
+    id:"blaue-acht",
+    name:"Blaue Acht",
+    translation:"Allemand · Huit Bleu",
+    color:"#dde6a1",
+    dots:["#dde6a1","#b8d4d4"],
+    pocket:"images/blaue-acht.jpeg",
+    watch:null,
+    desc:"Lime pastel et bleu glacier. Une combinaison rare, presque sorbet, qui détourne avec audace les codes du luxe traditionnel. Format gousset uniquement.",
+    hasBracelet:false
+  },
+  {
+    id:"huit-blanc",
+    name:"Huit Blanc",
+    translation:"Français · Huit Blanc",
+    color:"#f5f5f5",
+    dots:["#f5f5f5","#fb7185","#fcd34d","#86efac","#93c5fd"],
+    pocket:"images/huit-blanc.jpeg",
+    watch:null,
+    desc:"Pureté absolue. Boîtier blanc immaculé rehaussé de huit vis hexagonales aux couleurs de l'arc-en-ciel — chaque vis d'une teinte différente. Hommage absolu au Pop Art originel. Format gousset uniquement.",
+    hasBracelet:false
+  },
+  {
+    id:"otto-rosso",
+    name:"Otto Rosso",
+    translation:"Italien · Huit Rouge",
+    color:"#c1392b",
+    dots:["#c1392b","#ffc1c1"],
+    pocket:"images/otto-rosso.jpg",
+    watch:null,
+    desc:"Le rouge cerise italien dialogue avec un cadran rose pâle Petite Tapisserie. Lanière beige aux coutures rouges. Une pièce romantique et puissante, l'expression la plus audacieuse de la palette Royal Pop.",
+    hasBracelet:false
+  }
+];
+
+const grid = document.getElementById('grid');
+const PRICES = { pocket: 300, bracelet: 400, strap: 120 };
+const cardStates = {}; // store selected config per card id
+
+function configLabel(type){
+  if(type === 'bracelet') return 'Montre + Bracelet';
+  if(type === 'strap') return 'Bracelet seul';
+  return 'Format Gousset';
+}
+
+function buildWaUrl(p, type){
+  const label = configLabel(type);
+  const price = PRICES[type];
+  const text = `Bonjour, je souhaite commander la Royal Pop *${p.name}* — Configuration : *${label}* — ${price}€. Pouvez-vous confirmer la disponibilité et la livraison ?`;
+  return `https://wa.me/33662064750?text=${encodeURIComponent(text)}`;
+}
+
+products.forEach((p,i) => {
+  cardStates[p.id] = 'pocket';
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.style.setProperty('--card-color', p.color);
+  card.dataset.id = p.id;
+  card.innerHTML = `
+    <div class="card-num">
+      <span>N° 0${i+1} / 08</span>
+      <span>${p.savonnette ? 'Savonnette' : 'Lépine'}</span>
+    </div>
+    <div class="card-img" data-action="open-modal">
+      <img class="main" src="${p.pocket}" alt="${p.name} — montre de poche">
+      ${p.watch ? `<img class="alt" src="${p.watch}" alt="${p.name} — version bracelet">` : ''}
+    </div>
+    <div class="card-color-dots">
+      ${p.dots.map(c => `<span style="background:${c}"></span>`).join('')}
+    </div>
+    <div class="card-name">${p.name}</div>
+    <div class="card-meta">${p.translation}</div>
+    <div class="card-config">
+      <div class="card-config-label">Configuration</div>
+      <div class="card-config-opts" data-config-opts>
+        <button class="card-config-opt active" data-type="pocket">
+          <span class="opt-name">Format Gousset</span>
+          <span class="opt-price">300 €</span>
+        </button>
+        <button class="card-config-opt" data-type="bracelet" ${p.hasBracelet ? '' : 'disabled'}>
+          <span class="opt-name">Montre + Bracelet</span>
+          <span class="opt-price">${p.hasBracelet ? '400 €' : '—'}</span>
+        </button>
+        <button class="card-config-opt" data-type="strap" ${p.hasBracelet ? '' : 'disabled'}>
+          <span class="opt-name">Bracelet seul</span>
+          <span class="opt-price">${p.hasBracelet ? '120 €' : '—'}</span>
+        </button>
+      </div>
+      <div class="card-action">
+        <div class="card-total">Total<b data-total>300 €</b></div>
+        <a class="card-buy" data-buy href="${buildWaUrl(p,'pocket')}" target="_blank" rel="noopener">Commander →</a>
+      </div>
+      <a class="card-details-link" data-action="open-modal">Voir le détail ↗</a>
+    </div>
+  `;
+
+  // open modal on image click or details link
+  card.querySelectorAll('[data-action="open-modal"]').forEach(el => {
+    el.addEventListener('click', () => openModal(p));
+  });
+
+  // config buttons
+  card.querySelectorAll('.card-config-opt').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if(btn.hasAttribute('disabled')) return;
+      const type = btn.dataset.type;
+      cardStates[p.id] = type;
+      // update UI
+      card.querySelectorAll('.card-config-opt').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      card.querySelector('[data-total]').textContent = PRICES[type] + ' €';
+      card.querySelector('[data-buy]').href = buildWaUrl(p, type);
+      // swap image if bracelet selected and watch image available
+      const mainImg = card.querySelector('.card-img img.main');
+      const altImg = card.querySelector('.card-img img.alt');
+      if((type === 'bracelet' || type === 'strap') && altImg){
+        mainImg.style.opacity = '0';
+        altImg.style.opacity = '1';
+        altImg.style.transform = 'translate(-50%,-50%) scale(1)';
+      } else {
+        mainImg.style.opacity = '';
+        if(altImg){
+          altImg.style.opacity = '';
+          altImg.style.transform = '';
+        }
+      }
+    });
+  });
+
+  grid.appendChild(card);
+});
+
+// ===== BRACELETS GRID =====
+const braceletsGrid = document.getElementById('braceletsGrid');
+const braceletProducts = products.filter(p => p.hasBracelet);
+braceletProducts.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'bracelet-card';
+  card.style.setProperty('--card-color', p.color);
+  card.innerHTML = `
+    <div class="bracelet-img">
+      <img src="${p.watch}" alt="Bracelet ${p.name}">
+    </div>
+    <div class="bracelet-label">Bracelet · Royal Pop</div>
+    <div class="bracelet-name">${p.name}</div>
+    <div class="bracelet-footer">
+      <div class="bracelet-price">120 €</div>
+      <div class="bracelet-cta">Commander</div>
+    </div>
+  `;
+  card.addEventListener('click', () => {
+    const text = `Bonjour, je souhaite commander le bracelet *${p.name}* (120€) pour ma Royal Pop. Pouvez-vous confirmer la disponibilité et la livraison ?`;
+    window.open(`https://wa.me/33662064750?text=${encodeURIComponent(text)}`, '_blank');
+  });
+  braceletsGrid.appendChild(card);
+});
+
+const modal = document.getElementById('modal');
+const modalClose = document.getElementById('modalClose');
+const modalImg = document.getElementById('modalImg');
+const modalTitle = document.getElementById('modalTitle');
+const modalTrans = document.getElementById('modalTrans');
+const modalDesc = document.getElementById('modalDesc');
+const modalTag = document.getElementById('modalTag');
+const modalTotal = document.getElementById('modalTotal');
+const modalBuy = document.getElementById('modalBuy');
+const modalMediaBg = document.getElementById('modalMediaBg');
+const configOptions = document.getElementById('configOptions');
+
+let current = null;
+let selectedConfig = 'pocket'; // pocket | bracelet | strap
+
+function openModal(p){
+  current = p;
+  selectedConfig = 'pocket';
+  modalTitle.textContent = p.name;
+  modalTrans.textContent = p.translation;
+  modalDesc.textContent = p.desc;
+  modalTag.textContent = `Royal Pop · ${p.savonnette ? 'Savonnette' : 'Lépine'}`;
+  modalImg.src = p.pocket;
+  modalMediaBg.style.setProperty('--card-color', p.color);
+  modalMediaBg.style.background = p.color;
+  document.querySelector('.modal').style.setProperty('--card-color', p.color);
+
+  // build config options
+  configOptions.innerHTML = '';
+
+  const optPocket = document.createElement('button');
+  optPocket.className = 'config-opt active';
+  optPocket.dataset.type = 'pocket';
+  optPocket.innerHTML = `
+    <div class="config-opt-info">
+      <div class="config-opt-name">Format Gousset</div>
+      <div class="config-opt-sub">Montre seule + lanière cuir</div>
+    </div>
+    <div class="config-opt-price">300 €</div>
+  `;
+  optPocket.addEventListener('click', () => selectConfig('pocket'));
+  configOptions.appendChild(optPocket);
+
+  const optBracelet = document.createElement('button');
+  optBracelet.className = 'config-opt';
+  optBracelet.dataset.type = 'bracelet';
+  if(!p.hasBracelet) optBracelet.setAttribute('disabled','');
+  optBracelet.innerHTML = `
+    <div class="config-opt-info">
+      <div class="config-opt-name">Montre + Bracelet</div>
+      <div class="config-opt-sub">${p.hasBracelet ? 'Bracelet caoutchouc assorti' : 'Indisponible sur ce modèle'}</div>
+    </div>
+    <div class="config-opt-price">${p.hasBracelet ? '400 €' : '—'}</div>
+  `;
+  if(p.hasBracelet){
+    optBracelet.addEventListener('click', () => selectConfig('bracelet'));
+  }
+  configOptions.appendChild(optBracelet);
+
+  const optStrap = document.createElement('button');
+  optStrap.className = 'config-opt';
+  optStrap.dataset.type = 'strap';
+  if(!p.hasBracelet) optStrap.setAttribute('disabled','');
+  optStrap.innerHTML = `
+    <div class="config-opt-info">
+      <div class="config-opt-name">Bracelet seul</div>
+      <div class="config-opt-sub">${p.hasBracelet ? 'Bracelet assorti (sans montre)' : 'Indisponible sur ce modèle'}</div>
+    </div>
+    <div class="config-opt-price">${p.hasBracelet ? '120 €' : '—'}</div>
+  `;
+  if(p.hasBracelet){
+    optStrap.addEventListener('click', () => selectConfig('strap'));
+  }
+  configOptions.appendChild(optStrap);
+
+  updateTotal();
+  modal.classList.add('open');
+  document.body.classList.add('body-noscroll');
+}
+
+function selectConfig(type){
+  if(!current) return;
+  if((type === 'bracelet' || type === 'strap') && !current.hasBracelet) return;
+  selectedConfig = type;
+  document.querySelectorAll('.config-opt').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.config-opt[data-type="${type}"]`).classList.add('active');
+
+  // swap image
+  if((type === 'bracelet' || type === 'strap') && current.watch){
+    modalImg.src = current.watch;
+  } else {
+    modalImg.src = current.pocket;
+  }
+  updateTotal();
+}
+
+function updateTotal(){
+  const price = PRICES[selectedConfig];
+  modalTotal.textContent = price + ' €';
+  modalBuy.href = buildWaUrl(current, selectedConfig);
+}
+
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.classList.remove('body-noscroll');
+}
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
